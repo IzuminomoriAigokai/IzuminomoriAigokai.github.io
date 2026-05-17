@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>泉の森ふれあい樹林 | 横浜市泉区</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', Meiryo, sans-serif; color: #333; background: #f9faf7; }
+
+    /* ヘッダー */
+    header { background: #2d5a27; }
+    .header-top { display: flex; align-items: center; gap: 16px; padding: 20px 40px 16px; }
+    .logo-circle {
+      width: 56px; height: 56px; border-radius: 50%;
+      background: #4a8c3f; display: flex; align-items: center;
+      justify-content: center; font-size: 28px; flex-shrink: 0;
+    }
+    .site-title { font-size: 22px; font-weight: bold; color: #e8f5e3; }
+    .site-subtitle { font-size: 13px; color: #a8d4a0; margin-top: 4px; }
+    nav { background: #1e3d1b; display: flex; padding: 0 32px; flex-wrap: wrap; }
+    nav a {
+      color: #c8e8c0; text-decoration: none; font-size: 14px;
+      padding: 12px 18px; display: block; border-bottom: 2px solid transparent;
+    }
+    nav a:hover { color: #fff; border-bottom-color: #7ec87a; }
+    nav a.active { color: #fff; border-bottom-color: #7ec87a; }
+
+    /* ヒーロー */
+    .hero {
+      background: linear-gradient(160deg, #3d7a35 0%, #5a9e50 50%, #7ab870 100%);
+      padding: 64px 40px 56px; text-align: center;
+    }
+    .hero-icons { font-size: 52px; margin-bottom: 20px; opacity: 0.9; }
+    .hero h1 { font-size: 28px; font-weight: bold; color: #fff; margin-bottom: 12px; line-height: 1.4; }
+    .hero p { font-size: 15px; color: #d4eece; line-height: 1.8; max-width: 560px; margin: 0 auto 28px; }
+    .hero-btn {
+      display: inline-block; background: #fff; color: #2d5a27;
+      padding: 12px 36px; border-radius: 28px; font-size: 15px;
+      font-weight: bold; text-decoration: none; cursor: pointer;
+    }
+    .hero-btn:hover { background: #e8f5e3; }
+
+    /* メインコンテンツ */
+    main { max-width: 900px; margin: 0 auto; padding: 40px 24px; }
+
+    /* セクション共通 */
+    section { margin-bottom: 48px; }
+    .section-title {
+      font-size: 18px; font-weight: bold; color: #2d5a27;
+      border-left: 4px solid #4a8c3f; padding-left: 12px;
+      margin-bottom: 8px;
+    }
+    .section-lead { font-size: 13px; color: #888; margin-bottom: 20px; }
+
+    /* 基本情報カード */
+    .info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 16px; }
+    .info-card {
+      background: #fff; border: 1px solid #ddecd8; border-radius: 10px;
+      padding: 20px 16px; text-align: center; box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+    }
+    .info-card .icon { font-size: 32px; margin-bottom: 10px; }
+    .info-card .label { font-size: 12px; color: #888; margin-bottom: 6px; }
+    .info-card .value { font-size: 15px; font-weight: bold; color: #2d5a27; }
+
+    /* お知らせ */
+    .news-list { list-style: none; }
+    .news-list li {
+      display: flex; align-items: flex-start; gap: 12px;
+      padding: 14px 0; border-bottom: 1px solid #e8f0e4; font-size: 14px;
+    }
+    .news-date { color: #4a8c3f; font-size: 13px; white-space: nowrap; min-width: 90px; margin-top: 2px; }
+    .news-tag {
+      background: #eaf3de; color: #3b6d11; font-size: 11px;
+      padding: 3px 10px; border-radius: 12px; white-space: nowrap;
+    }
+
+    /* 四季 */
+    .season-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+    .season-card { border-radius: 10px; padding: 20px 12px; text-align: center; }
+    .s-spring { background: #fdf0f5; border: 1px solid #f5c8d8; }
+    .s-summer { background: #eaf3de; border: 1px solid #c0dd97; }
+    .s-autumn { background: #faeeda; border: 1px solid #fac775; }
+    .s-winter { background: #e6f1fb; border: 1px solid #b5d4f4; }
+    .season-icon { font-size: 30px; margin-bottom: 8px; }
+    .season-name { font-size: 14px; font-weight: bold; color: #333; margin-bottom: 6px; }
+    .season-desc { font-size: 12px; color: #666; line-height: 1.6; }
+
+    /* アクセス */
+    .access-box { background: #fff; border: 1px solid #ddecd8; border-radius: 10px; padding: 20px 24px; }
+    .access-row { display: flex; gap: 16px; padding: 10px 0; border-bottom: 1px solid #e8f0e4; font-size: 14px; }
+    .access-row:last-child { border-bottom: none; }
+    .access-label { color: #4a8c3f; font-weight: bold; min-width: 70px; }
+
+    /* フッター */
+    footer { background: #1e3d1b; color: #7aaa72; font-size: 13px; padding: 24px 40px; text-align: center; }
+
+    /* レスポンシブ */
+    @media (max-width: 600px) {
+      .header-top { padding: 16px 20px; }
+      nav { padding: 0 8px; }
+      nav a { padding: 10px 10px; font-size: 13px; }
+      .hero { padding: 40px 20px; }
+      .hero h1 { font-size: 20px; }
+      .season-grid { grid-template-columns: repeat(2, 1fr); }
+      main { padding: 24px 16px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="header-top">
+      <div class="logo-circle">🌳</div>
+      <div>
+        <div class="site-title">泉の森ふれあい樹林</div>
+        <div class="site-subtitle">横浜市泉区 ／ Izumi no Mori Fureai Jurin</div>
+      </div>
+    </div>
+    <nav>
+      <a href="#" class="active">ホーム</a>
+      <a href="#">樹林について</a>
+      <a href="#">イベント</a>
+      <a href="#">アクセス</a>
+      <a href="#">お問い合わせ</a>
+    </nav>
+  </header>
+
+  <div class="hero">
+    <div class="hero-icons">🌲🌳🌿🌳🌲</div>
+    <h1>横浜市泉区　泉の森ふれあい樹林</h1>
+    <p>横浜市泉区にある泉の森ふれあい樹林は、地域の皆さんに親しまれてきた憩いの緑地です。四季折々の自然をお楽しみください。</p>
+  </div>
+
+  <main>
+
+    <!-- お知らせ -->
+    <section>
+      <div class="section-title">お知らせ</div>
+      <p class="section-lead">最新情報</p>
+      <ul class="news-list">
+        <li>
+          <span class="news-date">2026.05.17</span>
+          <span class="news-tag">お知らせ</span>
+          <span>2026年度総会を実施しました。</span>
+        </li>
+      </ul>
+    </section>
+
+    <!-- 四季の見どころ -->
+    <section>
+      <div class="section-title">四季の見どころ</div>
+      <div class="season-grid">
+        <div class="season-card s-spring">
+          <div class="season-icon">🌸</div>
+          <div class="season-name">春</div>
+          <div class="season-desc">美しい桜を独り占め！</div>
+        </div>
+        <div class="season-card s-summer">
+          <div class="season-icon">🌿</div>
+          <div class="season-name">夏</div>
+          <div class="season-desc">深い緑陰。昆虫観察に最適</div>
+        </div>
+        <div class="season-card s-autumn">
+          <div class="season-icon">🍂</div>
+          <div class="season-name">秋</div>
+          <div class="season-desc">どんぐり拾いや紅葉が楽しい季節です</div>
+        </div>
+        <div class="season-card s-winter">
+          <div class="season-icon">❄️</div>
+          <div class="season-name">冬</div>
+          <div class="season-desc">落葉後の明るい林床で野鳥観察を</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- アクセス -->
+    <section>
+      <div class="section-title">アクセス</div>
+      <div class="access-box">
+        <div class="access-row">
+          <span class="access-label">住所</span>
+          <span>〒245-0012 横浜市泉区中田北3-23</span>
+        </div>
+        <div class="access-row">
+          <span class="access-label">問合せ</span>
+          <span>準備中</span>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    © 2026 泉の森ふれあい樹林 ／ 横浜市泉区
+  </footer>
+
+</body>
+</html>
